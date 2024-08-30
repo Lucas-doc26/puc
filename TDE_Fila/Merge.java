@@ -18,26 +18,26 @@ public class Merge {
     public void ordena(){
         Fila filaR = new Fila(tamanho);
 
-        int i = 0;
-        int j = 0;
-        while(i<filaA.dados.length){
-            int menor = filaA.dados[i];
-            while(j<filaB.dados.length){
-                if(menor>filaB.dados[j]){
-                    menor = filaB.dados[j];
+        int menor;
+        while(!filaR.cheia()){
+            if(!filaA.vazia()){
+                menor = filaA.dados[filaA.primeiro];
+            }else{
+                menor = filaB.dados[filaB.primeiro];
+            }
+            if(!filaB.vazia()){
+                if(menor>=filaB.dados[filaB.primeiro]){
+                    menor = filaB.dados[filaB.primeiro];
                     filaR.insere(menor);
-                    j++;
-                    break;
-                } else{break;}
-            }
-            if(!(menor != filaA.dados[i])){
-                filaR.insere(menor);
-                if(filaB.dados.length > filaA.dados.length && i == filaA.dados.length - 1){
-                    break;
+                    filaB.remove();
+                }else{
+                    filaR.insere(menor);
+                    filaA.remove();
                 }
-                i++;
+            }else{
+                filaR.insere(menor);
+                filaA.remove();
             }
-
 
         }
 
@@ -45,3 +45,4 @@ public class Merge {
     }
 
 }
+

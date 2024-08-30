@@ -1,8 +1,8 @@
 package TDE_Fila;
 
 public class Fila {
-    private int primeiro;
-    private int ultimo;
+    public int primeiro;
+    public int ultimo;
     public int dados[];
 
     public int getUltimo(){
